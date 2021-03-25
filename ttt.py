@@ -6,10 +6,7 @@ gm.bgcolor("lightpink")
 gm.setup(width=800, height=600)
 gm.tracer(0)
 
-player_turn = "x"
-
-
-class Game():
+class Board:
 
     def __init__(self):
         self.line(-100, 0, 25, .5)
@@ -20,6 +17,13 @@ class Game():
         self.board = [" ", " ", " ",
                       " ", " ", " ",
                       " ", " ", " "]
+        self._current_player = "x"
+
+    def get_current_player(self):
+        return self._current_player
+
+    def set_current_player(self, new_player):
+        self._current_player = new_player
 
     def line(self, start, stop, width, len):
         line = turtle.Turtle()
@@ -39,39 +43,45 @@ class Game():
         pen.write("Type Spot Number (1-9) to make your move", align="center", font=("Courier", 24, "normal"))
 
 
-def draw(token):
-    if token == "x":
-        t = turtle.Turtle()
-        t.goto(-50,-50)
-        t.goto(50,50)
-        t.hideturtle()
-        u = turtle.Turtle()
-        u.goto(50,-50)
-        u.goto(-50,50)
-        u.hideturtle()
-    else:
-        v = turtle.Turtle()
-        v.penup()
-        v.goto(-180, -250)
-        v.pendown()
-        v.circle(60)
-        v.hideturtle()
+class Game:
 
-def make_move(player_turn):
-    draw(player_turn)
-    if player_turn == "x":
-        player_turn = "o"
-    else:
-        player_turn = "x"
+    def __init__(self):
+        self._board = Board()
 
+    def draw(self, token):
+        if token == "x":
+            t = turtle.Turtle()
+            t.goto(-50,-50)
+            t.goto(50,50)
+            t.hideturtle()
+            u = turtle.Turtle()
+            u.goto(50,-50)
+            u.goto(-50,50)
+            u.hideturtle()
+        else:
+            v = turtle.Turtle()
+            v.penup()
+            v.goto(-180, -250)
+            v.pendown()
+            v.circle(60)
+            v.hideturtle()
 
-
-
-
-Game()
-make_move("x")
-make_move("o")
+    def make_move(self):
+        player_turn = self._board.get_current_player()
+        self.draw(player_turn)
+        if player_turn == "x":
+            self._board.set_current_player("o")
+        else:
+            self._board.set_current_player("x")
 
 
-while True:
-    gm.update()
+def main():
+    g = Game()
+    #g.make_move()
+    #g.make_move()
+    while True:
+        gm.update()
+
+
+if __name__ == "__main__":
+    main()
