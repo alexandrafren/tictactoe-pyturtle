@@ -7,9 +7,6 @@ MarkupSafe==1.1.1
 packaging==20.9
 pycparser==2.20
 pynput==1.7.3
-pyobjc-core==7.1
-pyobjc-framework-Cocoa==7.1
-pyobjc-framework-Quartz==7.1
 pyparsing==2.4.7
 PyYAML==5.4.1
 six==1.15.0
