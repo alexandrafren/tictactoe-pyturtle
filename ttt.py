@@ -50,14 +50,17 @@ class Game:
         self._board = Board()
         self._state = "UNFINISHED"
 
-    def game_state(self):
+    def game_state(self, spot):
         if self._state != "UNFINISHED":
             return False
         else:
-            return True
+            if self._board.get_board()[spot] == " ":
+                return True
+            else:
+                return False
 
     def make_move1(self):
-        if self.game_state():
+        if self.game_state(0):
             player_turn = self._board.get_current_player()
             self._board.set_board(0, player_turn)
             t = turtle.Turtle()
@@ -74,7 +77,7 @@ class Game:
             return False
 
     def make_move2(self):
-        if self.game_state():
+        if self.game_state(1):
             player_turn = self._board.get_current_player()
             self._board.set_board(1, player_turn)
             t = turtle.Turtle()
@@ -91,7 +94,7 @@ class Game:
             return False
 
     def make_move3(self):
-        if self.game_state():
+        if self.game_state(2):
             player_turn = self._board.get_current_player()
             self._board.set_board(2, player_turn)
             t = turtle.Turtle()
@@ -108,7 +111,7 @@ class Game:
             return False
 
     def make_move4(self):
-        if self.game_state():
+        if self.game_state(3):
             player_turn = self._board.get_current_player()
             self._board.set_board(3, player_turn)
             t = turtle.Turtle()
@@ -125,7 +128,7 @@ class Game:
             return False
 
     def make_move5(self):
-        if self.game_state():
+        if self.game_state(4):
             player_turn = self._board.get_current_player()
             self._board.set_board(4, player_turn)
             t = turtle.Turtle()
@@ -142,7 +145,7 @@ class Game:
             return False
 
     def make_move6(self):
-        if self.game_state():
+        if self.game_state(5):
             player_turn = self._board.get_current_player()
             self._board.set_board(5, player_turn)
             t = turtle.Turtle()
@@ -159,7 +162,7 @@ class Game:
             return False
 
     def make_move7(self):
-        if self.game_state():
+        if self.game_state(6):
             player_turn = self._board.get_current_player()
             self._board.set_board(6, player_turn)
             t = turtle.Turtle()
@@ -176,9 +179,9 @@ class Game:
             return False
 
     def make_move8(self):
-        if self.game_state():
+        if self.game_state(7):
             player_turn = self._board.get_current_player()
-            self._board.set_board(8, player_turn)
+            self._board.set_board(7, player_turn)
             t = turtle.Turtle()
             if player_turn == "x":
                 t.shape("purplecross.gif")
@@ -193,7 +196,7 @@ class Game:
             return False
 
     def make_move9(self):
-        if self.game_state():
+        if self.game_state(8):
             player_turn = self._board.get_current_player()
             self._board.set_board(8, player_turn)
             t = turtle.Turtle()
